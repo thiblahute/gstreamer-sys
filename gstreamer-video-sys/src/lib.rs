@@ -663,7 +663,7 @@ pub struct GstVideoCodecFrame {
     pub events: *mut glib::GList,
     pub user_data: gpointer,
     pub user_data_destroy_notify: glib::GDestroyNotify,
-    pub padding: [c_void; 20],
+    pub padding: [gpointer; 20],
 }
 
 #[repr(C)]
@@ -673,7 +673,7 @@ pub struct GstVideoCodecState {
     pub caps: *mut gst::GstCaps,
     pub codec_data: *mut gst::GstBuffer,
     pub allocation_caps: *mut gst::GstCaps,
-    pub padding: [c_void; 19],
+    pub padding: [gpointer; 19],
 }
 
 #[repr(C)]
@@ -732,7 +732,7 @@ pub struct GstVideoDecoderClass {
     pub getcaps: Option<unsafe extern "C" fn(*mut GstVideoDecoder, *mut gst::GstCaps) -> *mut gst::GstCaps>,
     pub drain: Option<unsafe extern "C" fn(*mut GstVideoDecoder) -> gst::GstFlowReturn>,
     pub transform_meta: Option<unsafe extern "C" fn(*mut GstVideoDecoder, *mut GstVideoCodecFrame, *mut gst::GstMeta) -> gboolean>,
-    pub padding: [c_void; 14],
+    pub padding: [gpointer; 14],
 }
 
 #[repr(C)]
@@ -1013,7 +1013,7 @@ pub struct GstVideoDecoder {
     pub input_segment: gst::GstSegment,
     pub output_segment: gst::GstSegment,
     pub priv_: *mut GstVideoDecoderPrivate,
-    pub padding: [c_void; 20],
+    pub padding: [gpointer; 20],
 }
 
 #[repr(C)]
@@ -1025,7 +1025,7 @@ pub struct GstVideoEncoder {
     pub input_segment: gst::GstSegment,
     pub output_segment: gst::GstSegment,
     pub priv_: *mut GstVideoEncoderPrivate,
-    pub padding: [c_void; 20],
+    pub padding: [gpointer; 20],
 }
 
 #[repr(C)]
